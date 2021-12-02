@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "zootracker",
+    "slug": "zootracker",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "zootracker"
+}
