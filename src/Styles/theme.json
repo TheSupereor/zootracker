@@ -1,0 +1,19 @@
+{
+    "colors": {
+        "primary": "#013E39",
+        "light": "#FFF",
+        "bg": "#EBE6D3",
+        "bg-darker": "#B4A982",
+        "tabs": "#F8F7F2",
+        "dark": "#000",
+        "muted": "#C4c4c4",
+        "muted50": "#f4f4f4"
+    },
+    "fonts": {
+        "roboto": "Roboto-Regular",
+        "roboto-med": "Roboto-Medium",
+        "roboto-lgt": "Roboto-Light",
+        "roboto-bd": "Roboto-Bold",
+        "cientific": "FiraSans-SemiBoldItalic"
+    }
+}
