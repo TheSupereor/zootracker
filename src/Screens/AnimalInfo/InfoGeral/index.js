@@ -9,8 +9,9 @@ import {
 
 const animalImage = require('../../../Assets/images/image1.png')
 
-export default ( props ) => {
-	//console.log(props)
+export default ({navigation, route}) => {
+	console.log({navigation, route});
+	const DadosRota = route.params;
 	//console.log(props.route.params)
 	// const AnimalData = navigation.getParams()
 	// console.log(AnimalData)
@@ -28,10 +29,9 @@ export default ( props ) => {
 
 	return (
 		<ScrollView color="bg" >
-			<Text weight padding={20} paddingbottom={24}>Informações Gerais</Text>
+			<Text weight="bold" padding={20} paddingbottom={24}>Informações Gerais</Text>
 
-			{/* <Image source={require('../../../Assets/images/image1.png')} /> */}
-			<AnimalInfoImage imageSource={ animalImage } />
+			<AnimalInfoImage imageSource={ animalImage } height={400}/>
 			
 			<Container paddingleft={24} paddingright={24}>
 				<Container paddingbottom={24}>
@@ -40,7 +40,7 @@ export default ( props ) => {
 					<Text align='left'>Nível de ameaça: {AnimalData1.Nivel}</Text>
 				</Container>
 
-				<Text align='left' weight>Informações Gerais: </Text>
+				<Text align='left' weight="bold">Informações Gerais: </Text>
 				<Text align='left' paddingbottom={20}>Comportamento: {AnimalData1.Comportamento}</Text>
 				<Text align='left' paddingbottom={20}>Hábitos alimentares: {AnimalData1.HabitAlim}</Text>
 				<Text align='left' paddingbottom={20}>Habitats: {AnimalData1.Habitats}</Text>

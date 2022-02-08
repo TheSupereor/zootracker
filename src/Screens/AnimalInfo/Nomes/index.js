@@ -1,23 +1,79 @@
-import React from "react";
-import { Container, 
-        Text,
-        Image  } from "../../../Styles/index";
+import React, {useState} from "react";
+import {
+	Container,
+	Text,
+	ScrollView,
+	List, 
+	ListItem,
+	ListSeparator,
+} from "../../../Styles/index";
+
+const animalImage = require('../../../Assets/images/image1.png')
+
+export default ({ navigation, route }) => {
+	const DadosRota = route.params;
+
+	registros = [{
+		id: 1454532454335,
+		CienName: 'Mazama americana',
+		Name: 'Veado-mateiro'
+	}, {
+		id: 1345456546,
+		CienName: 'Mazama americana',
+		Name: 'Veado-mateiro'
+	}]
+	const [Lista, setLista] = useState(registros)
 
 
-export default () => {
-	
-	
+
 	return (
+		<>
 		<Container color="bg">
-			<Text>Pegada</Text>
-            {/* <Image source={require('../../../Assets/images/image 1.png')}/> */}
-            <Container>
-                <Text weight>Pegada Anterior(PA):</Text>
-                <Text weight>Pegada Posterior(PP):</Text>
-                <Text weight>Passada: <Text>Pode haver sobreposição parcial ou total das pegadas anterior e posterior. As passadas muitas vezes apresentam os conjuntos dianteiro/traseiro apontados para fora da trilha de pegadas.</Text></Text>
-                <Text weight>Fezes: <Text>São cilíndricas, com uma extremidade afilada e outra larga e côncava. O comprimento é de 1,2 cm e o diâmetro de 0,7 cm. A cor é verde escuro. São encontradas em pilhas fecais com dezenas de pelotas, às vezes em latrinas.</Text></Text>
-            </Container>
+			<Text weight="bold" padding={20}>Nomes</Text>
+
+			<ExploreList Lista={Lista}/>
 		</Container>
+		</>
 	)
 }
 
+function ExploreList({ Lista }){
+
+	const EmptyListMessage = () => {
+		return (
+			// Quando a lista estiver vazia
+			<Container>
+				<Text padding="20">Não há nenhum registro cadastrado!</Text>
+			</Container>
+		);
+	};
+
+	const ItemView = ( props ) => {
+		return (
+			// Flat List Item
+			<ListItem >
+				<Text size="small" weight="bold" align="left" style={{ fontStyle: 'italic', color:'red' }}>{props.CienName}</Text>
+				<Text size="small" align="left" style={{ color:'red' }}>{props.Name}</Text>
+			</ListItem >
+		);
+	};
+
+	const renderItem = ({ item }) => (
+		<ItemView
+			CienName={item.CienName}
+			Name={item.Name}
+			id={item.id}
+		/>
+	)
+
+	return(
+		<List
+			data={Lista}
+			keyExtractor={(item) => item.id}
+			renderItem={renderItem}
+			ListEmptyComponent={EmptyListMessage}
+			extraData={Lista}
+			style={List}
+		/>
+	)
+}

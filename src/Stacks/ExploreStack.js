@@ -17,7 +17,6 @@ export default () => (
       headerTitle:"Explorar",
       headerStyle: {
         backgroundColor: '#F8F7F2',
-
       },
     }}
   >

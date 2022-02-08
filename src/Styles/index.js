@@ -20,14 +20,14 @@ export const Container = styled.View`
     margin-bottom: ${(props) => props.marginBottom || 0}px;
     align-items: ${(props) => props.align || 'center'};
     max-width: ${(props) => props.width || '100%'};
-    max-height: ${(props) => (props.height ? props.height + 'px' : 'auto')};
+    height: ${(props) => (props.height ? props.height + 'px' : 'auto')};
     position: ${(props) => props.position || 'relative'};
     top: ${(props) => props.zIndex || 1}px;
 `;
 
 export const Text = styled.Text`
     font-size: ${props => props.size ? '15px' : '22px'};
-    font-weight: ${props => props.weight ? 'bold' : 'normal'};
+    font-weight: ${props => props.weight || 'normal'};
     text-align: ${props => props.align || 'center'};
     padding: ${(props) => props.padding || 0}px;
     padding-bottom: ${(props) => props.paddingbottom || 0}px;
@@ -86,19 +86,30 @@ export const Image = styled.Image`
     height: 100%;
 `;
 
-export const AnimalInfoImage = ({ imageSource }) => {
+export const AnimalInfoImage = ({ imageSource, height }) => {
 	return (
-		<Container height={400} marginBottom={30}>
+		<Container height={height} marginBottom={30}>
 			<Image source={imageSource} />
 		</Container>
 	)
 }
 
 export const ScrollView = styled.ScrollView`
-	flex: ${(props) => props.flex || '1'};
+  flex: ${(props) => props.flex || '1'};
   width: 100%;
   background: ${(props) => props.color ? theme.colors[props.color] : 'transparent'};
 `;
+
+export const AnimalInfoTabButton = styled.TouchableOpacity`
+	flex: 4;
+	height: 58px;
+	background-color: #F8F7F2;
+	justify-content: center;
+	align-items: center;
+	border-bottom-width: ${props => props.selected ? 3 + 'px' : 0};
+	border-bottom-color: #013E39;
+`;
+
 
 // export const Container = styled.View`
 //     flex: 1;

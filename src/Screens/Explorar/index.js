@@ -120,12 +120,12 @@ function ExploreList({ Lista, navigation }){
 		);
 	};
 
-	const ItemView = ({ CienName, Name }) => {
+	const ItemView = ( props ) => {
 		return (
 			// Flat List Item
-			<ListItem onPress={() => setActualAnimal(Name)}>
-				<Text size="small" weight="bold" align="left" style={{ fontStyle: 'italic' }}>{CienName}</Text>
-				<Text size="small" align="left">{Name}</Text>
+			<ListItem onPress={() => setActualAnimal(props.id)}>
+				<Text size="small" weight="bold" align="left" style={{ fontStyle: 'italic' }}>{props.CienName}</Text>
+				<Text size="small" align="left">{props.Name}</Text>
 			</ListItem >
 		);
 	};
@@ -134,6 +134,7 @@ function ExploreList({ Lista, navigation }){
 		<ItemView
 			CienName={item.CienName}
 			Name={item.Name}
+			id={item.id}
 		/>
 	)
 

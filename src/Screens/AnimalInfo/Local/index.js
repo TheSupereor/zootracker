@@ -1,20 +1,27 @@
 import React from "react";
-import { Container, 
-        Text,
-        Image  } from "../../../Styles/index";
+import {
+	Container,
+	Text,
+	Image,
+	AnimalInfoImage,
+	ScrollView
+} from "../../../Styles/index";
+const animalImage = require('../../../Assets/images/image2.png')
 
+export default ({ navigation, route }) => {
+	//console.log({navigation, route});
+	const DadosRota = route.params;
 
-export default () => {
-	
-	
 	return (
-		<Container color="bg">
-			<Text>Localização</Text>
-            {/* <Image source={require('../../../Assets/images/image 2.png')}/> */}
-            <Container>
-                <Text>Amplamente distribuída em todo o território nacional</Text>
-            </Container>
-		</Container>
+		<ScrollView color="bg" >
+			<Text weight="bold" padding={20} paddingbottom={24}>Localização</Text>
+
+			<AnimalInfoImage imageSource={animalImage} height={260}/>
+
+			<Container padding={20} paddingbottom={30}>
+				<Text>Amplamente distribuída em todo o território nacional</Text>
+			</Container>
+		</ScrollView>
 	)
 }
 

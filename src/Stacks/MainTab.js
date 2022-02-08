@@ -19,8 +19,9 @@ export default () => (
       initialRouteName="Caderno de campo"
       screenOptions={{
           headerShown: true,
-          headerStyle: { backgroundColor: "#F8F7F2" },
-          headerTitleStyle: { fontWeight: "200" }
+          headerStyle: { 
+            backgroundColor: "#F8F7F2",
+          },
       }}
       tabBar={props => <CustomTabBar {...props}/>}
     >

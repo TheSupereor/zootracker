@@ -14,23 +14,29 @@ const Stack = createStackNavigator();
 
 export default (props) => {
   //console.log(props)
+  // receber id do animal e fazer requisição com props.route.params.AnimalData
+  const itemExemplo = {
+    id: props.route.params.AnimalData,
+    CienName: 'Mazama americana',
+    Name: 'Veado-mateiro'
+  }
+
   return(
     <Stack.Navigator
       initialRouteName="Informações"
       screenOptions={{
         headerShown: true,
-        title: props.route.params.AnimalData,
-        //headerTitle: props => <AnimalInfoHeader {...props} />,
-        header: props => <AnimalInfoHeader {...props} />,
-        headerStyle: {
-          backgroundColor: '#F8F7F2',
-        },
+        title: itemExemplo.Name,
+        header: props => <AnimalInfoHeader {...props} data={itemExemplo} />,
+        animationEnabled: false,
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
       }}
     >
-      <Stack.Screen name="Informações" component={InfoGeral} />
-      <Stack.Screen name="Localização" component={Local} />
-      <Stack.Screen name="Anatomia" component={Pegadas} />
-      <Stack.Screen name="Nomes" component={Nomes} />
+      <Stack.Screen name="Informações" component={InfoGeral} initialParams={{...itemExemplo}}/>
+      <Stack.Screen name="Localização" component={Local} initialParams={{...itemExemplo}}/>
+      <Stack.Screen name="Anatomia" component={Pegadas} initialParams={{...itemExemplo}}/>
+      <Stack.Screen name="Nomes" component={Nomes} initialParams={{...itemExemplo}}/>
     </Stack.Navigator>
   )
 }
