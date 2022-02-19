@@ -6,8 +6,7 @@ import CustomTabBar from "../Components/CustomTabBar";
 import Caderno from '../Screens/Caderno'
 import Camera from '../Screens/Camera'
 import ExploreStack from './ExploreStack'
-import Explorar from '../Screens/Explorar'
-import Feedback from '../Screens/FeedBack'
+import FeedbackStack from './FeedbackStack'
 
 //iniciando o navegador para criar uma stack
 //stacks são telas que se ligam através do topo da tela
@@ -40,16 +39,8 @@ export default () => (
         <Tab.Screen name="ExploreStack" component={ExploreStack} options={{
           headerShown: false,
         }}/>
-        <Tab.Screen name="Feedback" component={Feedback} options={{
-          title: 'Feedback',
-          headerStyle: {
-            backgroundColor: '#F8F7F2',
-          },
-          headerTintColor: '#000000',
-          headerTitleStyle: {
-            fontWeight: '100',
-            fontFamily: 'Roboto'
-          },
+        <Tab.Screen name="FeedbackStack" component={FeedbackStack} options={{
+          headerShown: false
         }}/> 
     </Tab.Navigator>
 )

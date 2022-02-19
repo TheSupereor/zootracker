@@ -56,7 +56,7 @@ export default ({state, navigation}) => {
                       <TabTitle>Explorar</TabTitle>
                 }
             </TabItem>
-            <TabItem onPress={() => goTo('Feedback')}>
+            <TabItem onPress={() => goTo('FeedbackStack')}>
                 <Feedback style={{opacity: state.index === 3 ? 1 : 0.5}} width="32" height="32" fill="#FFFFFF"/>
                 {
                     state.index === 3  && 
