@@ -26,10 +26,13 @@ export const Container = styled.View`
 `;
 
 export const Text = styled.Text`
+    color: ${(props) => props.color || 'black'};
     font-size: ${props => props.size ? '15px' : '22px'};
     font-weight: ${props => props.weight || 'normal'};
     text-align: ${props => props.align || 'center'};
     padding: ${(props) => props.padding || 0}px;
+    padding-right: ${(props) => props.paddingright || 0}px;
+    padding-left: ${(props) => props.paddingleft || 0}px;
     padding-bottom: ${(props) => props.paddingbottom || 0}px;
     flex: 1;
     width: 100%;
@@ -39,6 +42,14 @@ export const List = styled.FlatList`
     flex: 1;
     margin-bottom: 10px;
     width: 90%;
+`;
+
+export const BottomButton = styled.TouchableOpacity`
+    flex: 1;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #013E39;
 `;
 
 export const ListItem = styled.TouchableOpacity`
@@ -110,6 +121,16 @@ export const AnimalInfoTabButton = styled.TouchableOpacity`
 	border-bottom-color: #013E39;
 `;
 
+export const TextInput = styled.TextInput`
+    background-color: #EBE6D3;
+    padding: 6px 10px;
+    width: 90%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    border-bottom-width: 1px;
+    border-bottom-color: #013E39;
+`
 
 // export const Container = styled.View`
 //     flex: 1;

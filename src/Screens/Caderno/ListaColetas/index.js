@@ -15,17 +15,15 @@ export default function ({ navigation }) {
 	
 	item = {
 		id: 1454532454335,
-		Local: "Pedra da galinha choca",
-		Regiao: "Quixadá",
+		especie: "capivara",
+		referencia: "Quixadá",
 		Data: "08/12/2021",
-		Hora: "15:00"
 	}
 	item2 = {
 		id: 12131234213,
-		Local: "Pedra da galinha choca",
-		Regiao: "Quixadá",
+		especie: "capivara",
+		referencia: "Quixadá",
 		Data: "08/12/2021",
-		Hora: "15:00"
 	}
 
 	registros = [item, item2]
@@ -38,7 +36,7 @@ export default function ({ navigation }) {
 
 			<ListConstructor Lista={Lista} />
 
-			<FloatingButton onPress={() => navigation.push('NovoRegistroCampo')}>
+			<FloatingButton onPress={() => console.log('a')}>
 				<Adicionar width="48" height="48" />
 			</FloatingButton>
 		</Container>
@@ -65,7 +63,7 @@ function ListConstructor({Lista}){
     );
   };
 
-	const ItemView = ({Local, Regiao, Data, Hora}) => {
+	const ItemView = ({Local, Regiao, Data}) => {
     	return (
 			<ListItem direction="row">
 				<Container flex={3}>
@@ -74,14 +72,13 @@ function ListConstructor({Lista}){
 				</Container>
 				<Container >
 					<Text size="small" align='left'>{Data}</Text>
-					<Text size="small" align='left'>{Hora}</Text>
 				</Container>
 			</ListItem>
     );
   };
 
 	const renderItem = ({ item }) => (
-     <ItemView Local={item.Local} Regiao={item.Regiao} Data={item.Data} Hora={item.Hora} />
+     <ItemView Local={item.Local} Regiao={item.Regiao} Data={item.Data} />
   );
 
 	return(

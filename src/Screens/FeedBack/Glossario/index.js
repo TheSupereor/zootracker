@@ -5,10 +5,10 @@ import {
 	ListItem,
 	ScrollView,
 	Image
-} from "../../Styles/index";
+} from "../../../Styles/index";
 
-import Mapa from '../../Assets/mapa'
-const logoUfc = require('../../Assets/images/brasaoufc.png')
+//import Mapa from '../../Assets/mapa'
+//const logoUfc = require('../../Assets/images/brasaoufc.png')
 
 export default () => {
 
