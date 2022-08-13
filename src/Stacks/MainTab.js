@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import CustomTabBar from "../Components/CustomTabBar";
 
 import CadernoStack from "./CadernoStack";
-import Camera from '../Screens/Camera'
+import CameraScreen from "../Screens/Camera";
 import ExploreStack from './ExploreStack'
 import FeedbackStack from './FeedbackStack'
 
@@ -24,8 +24,8 @@ export default () => (
       }}
       tabBar={props => <CustomTabBar {...props}/>}
     >
-        <Tab.Screen name="Caderno de campo" component={CadernoStack} options={{
-          headerShown: false,
+        <Tab.Screen name="CadernoStack" component={CadernoStack} options={{
+          headerShown: true,
           title: 'Caderno de campo',
           headerStyle: {
             backgroundColor: '#F8F7F2',
@@ -36,7 +36,7 @@ export default () => (
             fontFamily: 'Roboto'
           },
         }} />
-        <Tab.Screen name="Câmera" component={Camera} />
+        <Tab.Screen name="Câmera" component={CameraScreen} />
         <Tab.Screen name="ExploreStack" component={ExploreStack} options={{
           headerShown: false,
         }}/>

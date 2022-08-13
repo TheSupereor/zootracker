@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import Explorar from "../Screens/Explorar";
 import AnimalInfoStack from "./AnimalInfoStack";
+import advSearchModal from "../Screens/Explorar/advSearchModal";
 
 //iniciando o navegador para criar uma stack
 //stacks são telas que se ligam através do topo da tela
@@ -24,5 +25,8 @@ export default () => (
     <Stack.Screen name="AnimalInfo" component={AnimalInfoStack} options={{
       headerShown: false,
     }}/>
+    <Stack.Group screenOptions={{ presentation: 'modal' }}>
+      <Stack.Screen name="AdvSearch" component={advSearchModal} />
+    </Stack.Group>
   </Stack.Navigator>
 )

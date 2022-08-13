@@ -24,16 +24,26 @@ export default () => {
   var minutes = String(todayDate.getMinutes());
   const timestamp = hours + ':' + minutes;
 
-  const { control, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-      nome: '',
-      local: '',
-      data: today,
-      horario: timestamp,
-      anotacao: ''
-    }
+  const [formData, setFormData] = useState({
+    nome: '',
+    local: '',
+    data: today,
+    horario: timestamp,
+    anotacao: ''
   });
-  const onSubmit = data => console.log(data);
+
+  const handleChange = e => {
+    console.log(e);
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+    }));
+  };
+
+  const sendData = () => {
+    console.log(formData)
+  }
 
 
 	return (
@@ -44,106 +54,52 @@ export default () => {
 
       <Container marginbottom={20} marginright={20} marginleft={20}>
         <Text paddingright={20} paddingleft={20} align="left">Nome do campo:</Text>
-        <Controller
-        control={control}
-        rules={{
-         required: {
-           value: true,
-           message: 'Precisa de um nome!'
-         },
-        }}
-        render={({ field: { onChange, value } }) => (
-          <TextInput
-            onChangeText={onChange}
-            value={value}
-            placeholder="Campo"
-          />
-        )}
-        name="nome"
-      />
+        <TextInput
+          onChangeText={handleChange}
+          value={formData.nome}
+          placeholder="Campo"
+          name='nome'
+        />
       {/* {errors.firstName && <Text>This is required.</Text>} */}
 
       <Text paddingright={20} paddingleft={20} align="left">Nome do local:</Text>
-        <Controller
-        control={control}
-        rules={{
-         required: {
-           value: true,
-           message: 'Precisa de um nome!'
-         },
-        }}
-        render={({ field: { onChange, value } }) => (
-          <TextInput
-            onChangeText={onChange}
-            value={value}
-            placeholder="Local"
-          />
-        )}
-        name="local"
+      <TextInput
+        onChangeText={handleChange}
+        value={formData.local}
+        placeholder="Local"
+        name='local'
       />
       {/* {errors.firstName && <Text>This is required.</Text>} */}
 
       <Text paddingright={20} paddingleft={20} align="left">Data:</Text>
-        <Controller
-        control={control}
-        rules={{
-         required: {
-           value: true,
-           message: 'Precisa de uma data!'
-         },
-        }}
-        render={({ field: { onChange, value } }) => (
-          <TextInput
-            onChangeText={onChange}
-            value={value}
-            placeholder="data"
-            maxLength={10}
-          />
-        )}
-        name="data"
+      <TextInput
+        onChangeText={handleChange}
+        value={formData.data}
+        placeholder="Data"
+        name='data'
       />
       {/* {errors.firstName && <Text>This is required.</Text>} */}
 
       <Text paddingright={20} paddingleft={20} align="left">Horário:</Text>
-        <Controller
-        control={control}
-        rules={{
-         required: {
-           value: true,
-           message: 'Precisa de um horário!'
-         },
-        }}
-        render={({ field: { onChange, value } }) => (
-          <TextInput
-            onChangeText={onChange}
-            value={value}
-            placeholder="Horário"
-            maxLength={5}
-          />
-        )}
-        name="horario"
+      <TextInput
+        onChangeText={handleChange}
+        value={formData.horario}
+        placeholder="Horário"
+        name='horario'
       />
       {/* {errors.firstName && <Text>This is required.</Text>} */}
 
       <Text paddingright={20} paddingleft={20} align="left">Anotações:</Text>
-        <Controller
-        control={control}
-        rules={{
-         required: false,
-        }}
-        render={({ field: { onChange, value } }) => (
-          <TextInput
-            onChangeText={onChange}
-            value={value}
-            placeholder="Anotações"
-            multiline 
-          />
-        )}
-        name="anotacao"
+      <TextInput
+        onChangeText={handleChange}
+        value={formData.anotacao}
+        placeholder="Anotação"
+        name='anotacao'
       />
+
       {/* {errors.firstName && <Text>This is required.</Text>} */}
       </Container>
-      <BottomButton>
+      <BottomButton onPress={() => sendData()}>
         <Text weight="bold" color="white">Salvar</Text>
       </BottomButton>
     </ScrollView>

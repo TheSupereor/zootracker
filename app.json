@@ -6,6 +6,16 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Permita $(PRODUCT_NAME) acessar suas fotos.",
+          "savePhotosPermission": "Permita $(PRODUCT_NAME) salvar suas fotos.",
+          "isAccessMediaLocationEnabled": "true"
+        }
+      ]
+    ],
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": [

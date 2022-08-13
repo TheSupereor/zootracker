@@ -6,10 +6,11 @@ import { Container,
 				 ListItem, 
 				 ListSeparator, 
 				 View, 
-				 } from "../../Styles/index";
+				 } from "../../../Styles/index";
 
-import Mapa from '../../Assets/mapa'
-import Adicionar from '../../Assets/add_icon'
+import Mapa from '../../../Assets/mapa'
+import Adicionar from '../../../Assets/add_icon'
+import { Pressable } from "react-native";
 
 export default function ({ navigation }) {
 	
@@ -36,16 +37,16 @@ export default function ({ navigation }) {
 	return (
 		<Container color="bg">
 
-			<ListConstructor Lista={Lista} />
+			<ListConstructor Lista={Lista} navigation={navigation} />
 
-			<FloatingButton onPress={() => navigation.push('NovoRegistroCampo')}>
+			<FloatingButton onPress={() => navigation.push('Novo Campo')}>
 				<Adicionar width="48" height="48" />
 			</FloatingButton>
 		</Container>
 	)
 }
 
-function ListConstructor({Lista}){
+function ListConstructor({Lista, navigation}){
 
 	const EmptyListMessage = () => {
 		return (
@@ -65,23 +66,31 @@ function ListConstructor({Lista}){
     );
   };
 
-	const ItemView = ({Local, Regiao, Data, Hora}) => {
+	const ItemView = ({Local, Regiao, Data, Hora, id}) => {
     	return (
-			<ListItem direction="row">
-				<Container flex={3}>
-					<Text size="small" weight="bold" align="left">{Local}</Text>
-					<Text size="small" align="left">{Regiao}</Text>
-				</Container>
-				<Container >
-					<Text size="small" align='left'>{Data}</Text>
-					<Text size="small" align='left'>{Hora}</Text>
-				</Container>
-			</ListItem>
+			<Pressable>
+				<ListItem direction="row" onPress={() => navigation.navigate("Coletas de Campo", {
+					screen: 'Coletas',
+					params: {
+						campId: id,
+						campo: Local
+					}
+				})}>
+					<Container flex={3}>
+						<Text size="small" weight="bold" align="left">{Local}</Text>
+						<Text size="small" align="left">{Regiao}</Text>
+					</Container>
+					<Container >
+						<Text size="small" align='left'>{Data}</Text>
+						<Text size="small" align='left'>{Hora}</Text>
+					</Container>
+				</ListItem>
+			</Pressable>
     );
   };
 
 	const renderItem = ({ item }) => (
-     <ItemView Local={item.Local} Regiao={item.Regiao} Data={item.Data} Hora={item.Hora} />
+     <ItemView Local={item.Local} Regiao={item.Regiao} Data={item.Data} Hora={item.Hora} id={item.id} />
   );
 
 	return(

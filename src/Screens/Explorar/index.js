@@ -5,7 +5,9 @@ import { Container,
 				 List, 
 				 ListItem,
 				 ListSeparator,
-				 DropdownButtonStyle } from "../../Styles/index";
+				 DropdownButtonStyle,
+				 TextInput
+				} from "../../Styles/index";
 
 import Mapa from '../../Assets/mapa'
 import Procurar from '../../Assets/search'
@@ -17,6 +19,12 @@ import DropDownArrowUp from '../../Assets/dropdownarrowup'
 import SelectDropdown from 'react-native-select-dropdown'
 
 export default ( { navigation } ) => {
+	console.log('Teste');
+	const DadosRota = route.params;
+  if(DadosRota){
+    //fazer filtragem
+    console.log(DadosRota);
+  };
 
 	registros = [{
 		id: 1454532454335,
@@ -27,12 +35,39 @@ export default ( { navigation } ) => {
 		CienName: 'Mazama americana',
 		Name: 'Veado-mateiro'
 	}]
-	const [Lista, setLista] = useState(registros)
+	const [Lista, setLista] = useState(registros);
+	const [listaFiltrada, setListaFiltrada] = useState(registros);
 
-	const filters = ['Ordem Taxonômica', 'Ordem Alfabética', 'Localização']
+	const [search, setSearch] = useState('');
+
+	const filters = ['Ordem Taxonômica', 'Ordem Alfabética', 'Localização'];
+
+	useEffect(() => {
+		if(search !== ''){
+			setListaFiltrada(Lista.filter((item) => {
+				item.Name.toLowerCase() == search.toLowerCase();
+			}));
+		}else{
+			setListaFiltrada(registros);
+		}
+	}, [search]);
+
+	// Fazer requisição para banco de dados
+	
 
 	return (
 		<Container color="bg">
+			<View>
+				<TextInput 
+					onChangeText={text => setSearch(text)}
+					placeholder="Pesquise por nome"
+					name='nome'
+				/>
+				<Filtros width="36" height="36" onPress={() => {
+					DadosRota ? setListaFiltrada(Lista) : navigation.navigate('AdvSearch')
+				}}/>
+			</View>
+
 			<SelectDropdown
 				data={ filters }
 				defaultButtonText="Ordenar"
@@ -76,7 +111,7 @@ export default ( { navigation } ) => {
 			/>
 			<Container>
 				
-				<ExploreList Lista={Lista}  navigation={navigation} />
+				<ExploreList Lista={listaFiltrada}  navigation={navigation} />
 
 				<FloatingButton>
 					<Procurar width="48" height="48" />

@@ -34,7 +34,7 @@ export const Text = styled.Text`
     padding-right: ${(props) => props.paddingright || 0}px;
     padding-left: ${(props) => props.paddingleft || 0}px;
     padding-bottom: ${(props) => props.paddingbottom || 0}px;
-    flex: 1;
+    flex: ${(props) => props.flex || '1'};
     width: 100%;
 `;
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Caderno from "../Screens/Caderno";
-import NovoRegistroCampo from "../Screens/Caderno/NovoRegistroCampo";
+import Camp from "./Camp";
+// import Collect from "./Collect";
 
 //iniciando o navegador para criar uma stack
 //stacks são telas que se ligam através do topo da tela
@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 export default () => (
   <Stack.Navigator
-    initialRouteName="Caderno"
+    initialRouteName="Campos"
     screenOptions={{
       headerShown: true,
       headerStyle: {
@@ -19,7 +19,17 @@ export default () => (
       },
     }}
   >
-    <Stack.Screen name="Caderno" component={Caderno} />
-    <Stack.Screen name="NovoRegistroCampo" component={NovoRegistroCampo} />
+    <Stack.Screen name="Campos" 
+      component={Camp} 
+      options={{
+        headerShown: false,
+      }}
+    />
+    {/* <Stack.Screen name="Coletas de Campo" 
+      component={Collect}
+      options={{
+        headerShown: false,
+      }}
+    /> */}
   </Stack.Navigator>
 )

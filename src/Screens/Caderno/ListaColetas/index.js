@@ -6,12 +6,14 @@ import { Container,
 				 ListItem, 
 				 ListSeparator, 
 				 View, 
-				 } from "../../Styles/index";
+				 ScrollView,
+				 } from "../../../Styles/index";
 
-import Mapa from '../../Assets/mapa'
-import Adicionar from '../../Assets/add_icon'
+import Mapa from '../../../Assets/mapa.svg'
+import Adicionar from '../../../Assets/add_icon.svg'
 
-export default function ({ navigation }) {
+export default function ({ navigation, route }) {
+	const { campId, campo } = route.params;
 	
 	item = {
 		id: 1454532454335,
@@ -27,23 +29,27 @@ export default function ({ navigation }) {
 	}
 
 	registros = [item, item2]
-	const [Lista, setLista] = useState(registros)
+	const [Lista, setLista] = useState(registros);
 
-	
+	const ListHeader = () => {
+		return(
+			<Text size>{JSON.stringify(campo)}</Text>
+		)
+	};
 
 	return (
 		<Container color="bg">
 
-			<ListConstructor Lista={Lista} />
+			<ListConstructor Lista={Lista} Header={ListHeader} />
 
-			<FloatingButton onPress={() => console.log('a')}>
+			<FloatingButton onPress={() => navigation.push('Nova Coleta')}>
 				<Adicionar width="48" height="48" />
 			</FloatingButton>
 		</Container>
 	)
 }
 
-function ListConstructor({Lista}){
+function ListConstructor({Lista, Header}){
 
 	const EmptyListMessage = () => {
 		return (
@@ -63,12 +69,12 @@ function ListConstructor({Lista}){
     );
   };
 
-	const ItemView = ({Local, Regiao, Data}) => {
+	const ItemView = ({especie, referencia, Data}) => {
     	return (
 			<ListItem direction="row">
 				<Container flex={3}>
-					<Text size="small" weight="bold" align="left">{Local}</Text>
-					<Text size="small" align="left">{Regiao}</Text>
+					<Text size="small" weight="bold" align="left">{especie}</Text>
+					<Text size="small" align="left">{referencia}</Text>
 				</Container>
 				<Container >
 					<Text size="small" align='left'>{Data}</Text>
@@ -78,7 +84,7 @@ function ListConstructor({Lista}){
   };
 
 	const renderItem = ({ item }) => (
-     <ItemView Local={item.Local} Regiao={item.Regiao} Data={item.Data} />
+     <ItemView especie={item.especie} referencia={item.referencia} Data={item.Data} />
   );
 
 	return(
@@ -86,6 +92,11 @@ function ListConstructor({Lista}){
 			data={Lista}
 			keyExtractor={(item) => item.id}
 			ItemSeparatorComponent={ItemSeparatorView}
+			ListHeaderComponent={Header}
+			ListHeaderComponentStyle={{
+				paddingVertical: 10,
+				marginTop: 5
+			}}
 			renderItem={renderItem}
 			ListEmptyComponent={EmptyListMessage}
 			extraData={Lista}
