@@ -18,3 +18,24 @@
 <h4 align="center"> 
 	🚧  Aplicativo em desenvolvimento...  🚧
 </h4>
+
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Node.js](https://nodejs.org/en/)
+- [React Native](https://reactnative.dev/)
+- [Supabase](https://supabase.com/)
+- [Expo](https://expo.dev)
+
+Diversas outras foram utilizadas também, como React Native Camera, Gesture handler, React Native Dropdown, etc!
+
+### Features
+
+- [x] Cadastro de Campo
+- [x] Cadastro de Rastro dentro de campo
+- [x] Relação entre Rastros e Campos
+- [x] Informações sobre diversos animais
+- [x] Câmera
+- [ ] Banco de dados local (para possibilitar uso offline, com WatermelonDB)
+- [ ] Pesquisas avançadas dos animais
