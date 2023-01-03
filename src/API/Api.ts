@@ -36,9 +36,35 @@ const getAnimais = async () => {
 	return data;
 }
 
+const getAnimaisFiltered = async (filter: { name: string, order: string, foreignTable: boolean, foreignTableName?: string }) => {
+	const { data, error } = filter.foreignTable 
+		? await supabase.from('animais').select().order(filter.order, { foreignTable: filter.foreignTableName })
+		: await supabase.from('animais').select().order(filter.order);
+	if (error) console.log('Erro getAnimaisFiltered:', error);
+	return data;
+}
+
+const getAnimalById = async (id: number) => {
+	const { data, error } = await supabase.from('animais').select().eq('id', id);
+	if (error) console.log('Erro getAnimailById:', error);
+	return data;
+}
+
 const getAnimal2Byid = async (id: number) => {
 	const { data, error } = await supabase.from('animais2').select().eq('animID', id);
 	if (error) console.log('Erro getAnimal2Byid:', error);
+	return data;
+}
+
+const getAnimalByName = async (name: string) => {
+	const { data, error } = await supabase.from('animais').select().eq('cienName', name);
+	if (error) console.log('Erro getAnimailByName:', error);
+	return data;
+}
+
+const getAnimal2ByName = async (name: string) => {
+	const { data, error } = await supabase.from('animais2').select().eq('cienName', name);
+	if (error) console.log('Erro getAnimal2ByName:', error);
 	return data;
 }
 
@@ -199,7 +225,11 @@ export {
 	getCampos,
 	getColetas,
 	getAnimais,
+	getAnimaisFiltered,
+	getAnimalById,
 	getAnimal2Byid,
+	getAnimalByName,
+	getAnimal2ByName,
 	advancedSearch, 
 	getDadosAnimaisByid,
 	getUrlToImage,

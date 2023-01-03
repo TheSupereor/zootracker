@@ -61,7 +61,7 @@ export default function CameraScreen({ navigation }) {
 			alert('Foto salva na galeria!')
 		}) :
 		alert('Sem foto para salvar');
-	}
+	};
 
   // if (photo) {
   //   let sharePic = () => {
@@ -96,25 +96,28 @@ export default function CameraScreen({ navigation }) {
 
   return (
 		<>
-    <Camera style={{
-			flex: 1,
-			alignItems: 'center',
-			justifyContent: 'center',
-		}} ref={cameraRef}>
-      <View style={{
-				backgroundColor: '#fff',
-			}}>
-      </View>
-      <StatusBar style="auto" />
-				<TouchableOpacity style={{
-					position: 'absolute',
-					zIndex: 100,
-					left: (width/2 - 40),
-					bottom: 20
-				}} onPress={() => takePic()}>
-					<CameraButton width="80" height="80" fill="none"/>
-				</TouchableOpacity>
-    </Camera>
+    {
+      hasCameraPermission && hasMediaLibraryPermission &&
+        <Camera style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }} ref={cameraRef}>
+          <View style={{
+            backgroundColor: '#fff',
+          }}>
+          </View>
+          <StatusBar style="auto" />
+          <TouchableOpacity style={{
+            position: 'absolute',
+            zIndex: 100,
+            left: (width/2 - 40),
+            bottom: 20
+          }} onPress={() => takePic()}>
+            <CameraButton width="80" height="80" fill="none"/>
+          </TouchableOpacity>
+        </Camera>
+    }
 		</>
   );
 }

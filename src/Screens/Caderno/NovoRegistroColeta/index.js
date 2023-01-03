@@ -34,12 +34,18 @@ export default ({ navigation, route }) => {
     especie: '',
     referencia: '',
     horario: today,
-    medicoesPosteriorConjunto: '',
-    medicoesPosteriorAlmofada: '',
-    medicoesPosteriorDigito: '',
-    medicoesAnteriorConjunto: '',
-    medicoesAnteriorAlmofada: '',
-    medicoesAnteriorDigito: '',
+    ComprimentoPosteriorConjunto: 0,
+    LarguraPosteriorConjunto: 0,
+    ComprimentoPosteriorAlmofada: 0,
+    LarguraPosteriorAlmofada: 0,
+    ComprimentoPosteriorDigito: 0,
+    LarguraPosteriorDigito: 0,
+    ComprimentoAnteriorConjunto: 0,
+    LarguraAnteriorConjunto: 0,
+    ComprimentoAnteriorAlmofada: 0,
+    LarguraAnteriorAlmofada: 0,
+    ComprimentoAnteriorDigito: 0,
+    LarguraAnteriorDigito: 0,
     garras: false,
     coletor: '',
     anotacao: '',
@@ -156,54 +162,96 @@ export default ({ navigation, route }) => {
         <Text paddingright={20} paddingleft={20} align="left">Medições:</Text>
         <Text paddingright={20} paddingleft={20} align="left" size={15}>Pata Anterior:</Text>
         <TextInput
-          onChangeText={(text) => handleChange('medicoesAnteriorAlmofada', text)}
-          value={formData.medicoesAnteriorAlmofada}
+          onChangeText={(text) => handleChange('ComprimentoAnteriorAlmofada', text)}
+          value={formData.ComprimentoAnteriorAlmofada}
           placeholder="Almofada"
           keyboardType='numeric'
-          name='medicoesAnteriorAlmofada'
+          name='ComprimentoAnteriorAlmofada'
+        />
+        <TextInput
+          onChangeText={(text) => handleChange('LarguraAnteriorAlmofada', text)}
+          value={formData.LarguraAnteriorAlmofada}
+          placeholder="Almofada"
+          keyboardType='numeric'
+          name='LarguraAnteriorAlmofada'
         />
 
         {/* <Text paddingright={20} paddingleft={20} align="left">Pata Anterior:</Text> */}
         <TextInput
-          onChangeText={(text) => handleChange('medicoesAnteriorConjunto', text)}
-          value={formData.medicoesAnteriorConjunto}
+          onChangeText={(text) => handleChange('ComprimentoAnteriorConjunto', text)}
+          value={formData.ComprimentoAnteriorConjunto}
           placeholder="Conjunto"
           keyboardType='numeric'
-          name='medicoesAnteriorConjunto'
+          name='ComprimentoAnteriorConjunto'
+        />
+        <TextInput
+          onChangeText={(text) => handleChange('LarguraAnteriorConjunto', text)}
+          value={formData.LarguraAnteriorConjunto}
+          placeholder="Conjunto"
+          keyboardType='numeric'
+          name='LarguraAnteriorConjunto'
         />
         
         <TextInput
-          onChangeText={(text) => handleChange('medicoesAnteriorDigito', text)}
-          value={formData.medicoesAnteriorDigito}
+          onChangeText={(text) => handleChange('ComprimentoAnteriorDigito', text)}
+          value={formData.ComprimentoAnteriorDigito}
           placeholder="Dígito"
           keyboardType='numeric'
-          name='medicoesAnteriorDigito'
+          name='ComprimentoAnteriorDigito'
+        />
+        <TextInput
+          onChangeText={(text) => handleChange('LarguraAnteriorDigito', text)}
+          value={formData.LarguraAnteriorDigito}
+          placeholder="Dígito"
+          keyboardType='numeric'
+          name='LarguraAnteriorDigito'
         />
 
         <Text paddingright={20} paddingleft={20} align="left" size={15}>Pata Posterior:</Text>
         <TextInput
-          onChangeText={(text) => handleChange('medicoesPosteriorAlmofada', text)}
-          value={formData.medicoesPosteriorAlmofada}
+          onChangeText={(text) => handleChange('ComprimentoPosteriorAlmofada', text)}
+          value={formData.ComprimentoPosteriorAlmofada}
           placeholder="Almofada"
           keyboardType='numeric'
-          name='medicoesPosteriorAlmofada'
+          name='ComprimentoPosteriorAlmofada'
+        />
+        <TextInput
+          onChangeText={(text) => handleChange('LarguraPosteriorAlmofada', text)}
+          value={formData.LarguraPosteriorAlmofada}
+          placeholder="Almofada"
+          keyboardType='numeric'
+          name='LarguraPosteriorAlmofada'
         />
 
         {/* <Text paddingright={20} paddingleft={20} align="left">Pata Anterior:</Text> */}
         <TextInput
-          onChangeText={(text) => handleChange('medicoesPosteriorConjunto', text)}
-          value={formData.medicoesPosteriorConjunto}
-          placeholder="Conjunto"
+          onChangeText={(text) => handleChange('ComprimentoPosteriorConjunto', text)}
+          value={formData.ComprimentoPosteriorConjunto}
+          placeholder="Comprimento do Conjunto"
           keyboardType='numeric'
-          name='medicoesPosteriorConjunto'
+          name='ComprimentoPosteriorConjunto'
+        />
+        <TextInput
+          onChangeText={(text) => handleChange('LarguraPosteriorConjunto', text)}
+          value={formData.LarguraPosteriorConjunto}
+          placeholder="Largura do Conjunto"
+          keyboardType='numeric'
+          name='LarguraPosteriorConjunto'
         />
         
         <TextInput
-          onChangeText={(text) => handleChange('medicoesPosteriorDigito', text)}
-          value={formData.medicoesPosteriorDigito}
+          onChangeText={(text) => handleChange('ComprimentoPosteriorDigito', text)}
+          value={formData.ComprimentoPosteriorDigito}
           placeholder="Dígito"
           keyboardType='numeric'
-          name='medicoesPosteriorDigito'
+          name='ComprimentoPosteriorDigito'
+        />
+        <TextInput
+          onChangeText={(text) => handleChange('LarguraPosteriorDigito', text)}
+          value={formData.LarguraPosteriorDigito}
+          placeholder="Dígito"
+          keyboardType='numeric'
+          name='LarguraPosteriorDigito'
         />
 
         <Text paddingright={20} paddingleft={20} align="left" size={15}>Presença de garra:</Text>

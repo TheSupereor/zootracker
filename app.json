@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "zootracker",
-    "slug": "zootracker",
-    "version": "1.0.0",
+    "name": "Zootrack",
+    "slug": "Zootrack",
+    "version": "2.0.0",
+    "icon": "./src/Assets/images/logo.png",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -31,7 +32,16 @@
         "wasm",
         "svg"
       ]
+    },
+    "android": {
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_MEDIA_LOCATION",
+        "android.permission.CAMERA"
+      ],
+      "package": "com.thesups.zootracker"
     }
   },
-  "name": "zootracker"
+  "name": "Zootrack"
 }

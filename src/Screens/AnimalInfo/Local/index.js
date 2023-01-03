@@ -14,12 +14,11 @@ export default ({ navigation, route }) => {
 
 	return (
 		<ScrollView color="bg" >
-			<Text weight="bold" padding={20} paddingbottom={24}>{DadosRota.localizacao}</Text>
+			<AnimalInfoImage imageSource={DadosRota.regionImage} height={300}/>
 
-			<AnimalInfoImage imageSource={DadosRota.image} height={260}/>
-
-			<Container padding={20} paddingbottom={30}>
-				<Text>{DadosRota.estado}</Text>
+			<Container margin={20} paddingbottom={30}>
+				{/* <Text>{DadosRota.estado || ''}</Text> */}
+				<Text paddingbottom={24} align="left">{DadosRota.localizacao}</Text>
 			</Container>
 		</ScrollView>
 	)

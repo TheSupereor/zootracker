@@ -1,4 +1,4 @@
-package com.zootracker;
+package com.thesups.zootracker;
 
 import android.os.Bundle;
 

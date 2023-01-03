@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import theme from './theme.json'
+import { Dimensions } from 'react-native';
 
 export const SafeAreaView = styled.SafeAreaView`
 `;
@@ -100,10 +101,18 @@ export const Image = styled.Image`
     height: 100%;
 `;
 
+const { width } = Dimensions.get("window");
 export const AnimalInfoImage = ({ imageSource, height }) => {
     return (
-        <Container height={height} marginBottom={30}>
-            <Image source={imageSource} />
+        <Container marginBottom={10} >
+            <Image 
+              source={{uri: imageSource}} 
+              style={{
+                width: width, 
+                height: height,
+                resizeMode: 'contain'
+              }}
+            />
         </Container>
     )
 }

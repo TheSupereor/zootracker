@@ -70,7 +70,9 @@ export interface animais2{
   passada: string,
   pegadaAnterior: string,
   pegadaPosterior: string,
-  vestigios: string
+  vestigios: string,
+  regionImage: string,
+  vestigiosImages: string[]
 }
 
 export interface AdvSearch{
